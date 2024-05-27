@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Strona Główna";
+}
+
+<style>
+    .food-item {
+        background-color: powderblue;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        padding: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-shadow: 0px 0px 10px #e2e2e2;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        font-size: 13pt;
+    }
+
+    h1 {
+        margin-bottom: 50px;
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Aplikacja Dowóz Smaków!</h1>
+    <h5>Wybierz danie z naszej oferty </h5>
+
+    <div style="display: flex">
+        <div style="flex:1"></div>
+        <div style="flex:2">
+            @if (ViewBag.backend == null || ViewBag.backend.Count == 0)
+            {
+                <div>Brak dostępnych produktów :(</div>
+            }
+            @foreach (var foodItem in ViewBag.backend)
+            {
+                <div class="food-item">
+                    <div style="flex:12">
+                        <strong>@foodItem.Name</strong><br />
+                        @foodItem.Description<br />
+                        <strong>@foodItem.Price</strong>
+                    </div>
+                    <div>
+                        <img style="width:22px;flex:1" src="/icons/bin.png" />
+                    </div>
+                </div>
+            }
+        </div>
+        <div style="flex:1"></div>
+    </div>
+    <div>
+    </div>
+</div>
